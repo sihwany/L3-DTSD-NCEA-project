@@ -10,7 +10,7 @@ root = tk.Tk()
 root.title("NCEA Quiz Helper")
 root.geometry("900x700")
 
-root.mainloop()
-
 notebook = ttk.Notebook(root)
 notebook.pack(fill="both", expand=True, padx=15, pady=15)
+
+root.mainloop()
