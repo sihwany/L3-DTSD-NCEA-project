@@ -29,9 +29,57 @@ try:
         content = file.read()
     notes_box.insert(tk.END, content)
 except:
-    notes_box.insert(tk.END, "Could not load ncea_study_notes.txt")
+    notes_box.insert(tk.END, "Could not load study_notes.txt")
 
 notes_box.config(state="disabled")
 
+#generating Quiz
+questions = []
+
+def generate_quiz():
+    global questions
+    questions = []
+
+    try:
+        with open(DATA_FILE, "r", encoding="utf-8") as file:
+            content = file.read().strip()
+    except:
+        messagebox.showerror("Error", "Could not read notes file")
+        return
+
+    blocks = [b.strip() for b in content.split("\n\n") if b.strip()]
+
+    for block in blocks:
+        lines = [line.strip() for line in block.split("\n") if line.strip()]
+        if len(lines) < 4:
+            continue
+
+        title = lines[0]
+        correct = lines[1]
+        wrongs = lines[2:]
+
+        while len(wrongs) < 3:
+            wrongs.append("This statement is incorrect.")
+
+        distractors = random.sample(wrongs, 3)
+        options = [correct] + distractors
+        random.shuffle(options)
+
+        correct_letter = ["A", "B", "C", "D"][options.index(correct)]
+
+        questions.append({
+            "question": f"Which of the following statements about {title} is correct?",
+            "options": {
+                "A": options[0],
+                "B": options[1],
+                "C": options[2],
+                "D": options[3]
+            },
+            "correct": correct_letter
+        })
+
+    messagebox.showinfo("Success", f"Generated {len(questions)} questions!")
+
+ttk.Button(notes_tab, text="Start The Quiz", command=generate_quiz).pack(pady=15)
 
 root.mainloop()
