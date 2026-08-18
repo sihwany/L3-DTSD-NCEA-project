@@ -13,7 +13,6 @@ root.geometry("900x700")
 notebook = ttk.Notebook(root)
 notebook.pack(fill="both", expand=True, padx=15, pady=15)
 
-
 # Study Notes Tab
 notes_tab = ttk.Frame(notebook)
 notebook.add(notes_tab, text="Study Notes")
@@ -30,15 +29,47 @@ try:
     notes_box.insert(tk.END, content)
 except:
     notes_box.insert(tk.END, "Could not load study_notes.txt")
-
 notes_box.config(state="disabled")
 
-#generating Quiz
-questions = []
+#quiz tab
+quiz_tab = ttk.Frame(notebook)
+notebook.add(quiz_tab, text="Take Quiz")
 
+question_label = tk.Label(quiz_tab, text="Click Generate Quiz first",
+                          font=("Arial", 14, "bold"), wraplength=850, justify="left")
+question_label.pack(pady=25, padx=20)
+
+selected_option = tk.StringVar()
+option_buttons = []
+
+options_frame = ttk.Frame(quiz_tab)
+options_frame.pack(pady=10)
+
+for letter in ["A", "B", "C", "D"]:
+    btn = ttk.Radiobutton(options_frame, text="", variable=selected_option, value=letter)
+    btn.pack(anchor="w", pady=8, padx=30)
+    option_buttons.append(btn)
+
+feedback_label = tk.Label(quiz_tab, text="", font=("Arial", 12), wraplength=850)
+feedback_label.pack(pady=20)
+
+ttk.Button(quiz_tab, text="Next Question", command=lambda: check_and_next()).pack(pady=10)
+
+#generating Quiz (variable)
+questions = []
+current_question = None
+score = 0
+total_answered = 0
+
+#fuctions
 def generate_quiz():
-    global questions
+    global questions, current_question, score, total_answered
     questions = []
+    current_question = None
+    score = 0
+    total_answered = 0
+    selected_option.set("")
+    feedback_label.config(text="")
 
     try:
         with open(DATA_FILE, "r", encoding="utf-8") as file:
@@ -77,9 +108,5 @@ def generate_quiz():
             },
             "correct": correct_letter
         })
-
-    messagebox.showinfo("Success", f"Generated {len(questions)} questions!")
-
-ttk.Button(notes_tab, text="Start The Quiz", command=generate_quiz).pack(pady=15)
 
 root.mainloop()
