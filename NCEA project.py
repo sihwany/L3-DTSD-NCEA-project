@@ -108,5 +108,13 @@ def generate_quiz():
             },
             "correct": correct_letter
         })
+        
+    if not questions:
+        messagebox.showwarning("Error", "Not enough content in the notes file.")
+        return
+
+    random.shuffle(questions)
+    load_next_question()
+    notebook.select(1)
 
 root.mainloop()
