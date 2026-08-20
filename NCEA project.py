@@ -143,4 +143,29 @@ def load_next_question():
     selected_option.set("")
     feedback_label.config(text="")
 
+def check_and_next():
+    global current_question, score, total_answered
+
+    if not current_question:
+        return
+
+    selected = selected_option.get()
+    if not selected:
+        messagebox.showwarning("No answer", "Please select A, B, C or D")
+        return
+
+    total_answered += 1
+
+    if selected == current_question["correct"]:
+        score += 1
+        feedback_label.config(text="Correct! Well done.", fg="green")
+    else:
+        feedback_label.config(text=f"Wrong. Correct answer is {current_question['correct']}", fg="red")
+
+    # Wait 1.5 seconds then go to next question
+    root.after(1500, load_next_question)
+
+# Generate button
+ttk.Button(notes_tab, text="Generate Multiple Choice Quiz", command=generate_quiz).pack(pady=15)
+
 root.mainloop()
