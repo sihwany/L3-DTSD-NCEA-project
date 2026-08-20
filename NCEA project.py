@@ -108,7 +108,7 @@ def generate_quiz():
             },
             "correct": correct_letter
         })
-        
+
     if not questions:
         messagebox.showwarning("Error", "Not enough content in the notes file.")
         return
@@ -116,5 +116,31 @@ def generate_quiz():
     random.shuffle(questions)
     load_next_question()
     notebook.select(1)
+
+def load_next_question():
+    global current_question
+
+    if not questions:
+        # Show final score
+        if total_answered > 0:
+            percentage = round((score / total_answered) * 100)
+            messagebox.showinfo("Quiz Finished",
+                f"Well done!\n\nYour Score: {score} / {total_answered}\n({percentage}%)")
+        else:
+            messagebox.showinfo("Quiz Finished", "No questions were answered.")
+        current_question = None
+        return
+
+    current_question = questions.pop(0)
+    question_label.config(text=current_question["question"])
+
+    for i, letter in enumerate(["A", "B", "C", "D"]):
+        text = current_question["options"][letter]
+        if len(text) > 115:
+            text = text[:112] + "..."
+        option_buttons[i].config(text=f"{letter})  {text}")
+
+    selected_option.set("")
+    feedback_label.config(text="")
 
 root.mainloop()
