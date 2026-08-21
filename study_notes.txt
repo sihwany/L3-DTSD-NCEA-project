@@ -1,11 +1,27 @@
-test1 
-test1test1test1test1test1test1test1
-test1test1test1test1
-test1test1test1
-test1test1test1test1test1
+Photosynthesis
+Plants use chlorophyll to convert light energy into chemical energy. The equation is 6CO2 + 6H2O → C6H12O6 + 6O2. Light-dependent and light-independent reactions occur in chloroplasts.
+Photosynthesis mainly happens in the roots of the plant.
+The main product of photosynthesis is carbon dioxide.
+Chlorophyll reflects green light and absorbs red and blue light.
+Photosynthesis only occurs at night.
 
-test2
-test2test2test2test2test2test2test2test2test2
-test2test2test2test2test2test2
-test2test2test2test2test2test2test2test2
-test2test2test2test2
+New Zealand Wars
+The New Zealand Wars (1845-1872) were caused by land disputes and issues of sovereignty. The British Crown confiscated large areas of Māori land after the wars.
+The New Zealand Wars started in 1900.
+Māori won most of the major battles and kept all their land.
+The wars were mainly about fishing rights.
+The New Zealand Wars only happened in the South Island.
+
+Solving Linear Equations
+To solve an equation like 3x + 5 = 17, subtract 5 from both sides to get 3x = 12, then divide by 3. Always substitute your answer back to check.
+When solving equations you should always multiply both sides by zero.
+Linear equations can only have one variable called y.
+The first step is always to add the numbers on both sides.
+You never need to check your answer after solving an equation.
+
+Cell Structure
+Plant cells have a cell wall, chloroplasts and a large vacuole. Animal cells do not. Both have a nucleus, mitochondria, and cell membrane.
+Animal cells have chloroplasts so they can make their own food.
+The cell wall is found in both plant and animal cells.
+Mitochondria are only found in plant cells.
+The nucleus is not important for controlling the cell.
