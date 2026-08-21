@@ -55,7 +55,7 @@ feedback_label.pack(pady=20)
 
 ttk.Button(quiz_tab, text="Next Question", command=lambda: check_and_next()).pack(pady=10)
 
-#generating Quiz (variable)
+#generating quiz (variable)
 questions = []
 current_question = None
 score = 0
@@ -166,6 +166,6 @@ def check_and_next():
     root.after(1500, load_next_question)
 
 # Generate button
-ttk.Button(notes_tab, text="Generate Multiple Choice Quiz", command=generate_quiz).pack(pady=15)
+ttk.Button(notes_tab, text="Start The Quiz!", command=generate_quiz).pack(pady=15)
 
 root.mainloop()
